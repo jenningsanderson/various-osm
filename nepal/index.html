@@ -1,6 +1,70 @@
 <html>
 <head>
-<title>Nepal Earthquake</title>
+  <!--JQuery-->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>  -->
+  <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+  <script type="text/javascript" src="assets/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="assets/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="assets/jquery-ui.theme.min.css" />
+
+  <!--TimeSlider-->
+  <script type="text/javascript" src="assets/jQDateRangeSlider-withRuler-min.js"></script>
+  <link rel="stylesheet" href="assets/iThing-min.css" />
+  <link rel="stylesheet" href="assets/classic-min.css" />
+
+  <!-- D3 -->
+  <!-- <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
+  <script type="text/javascript" src="assets/d3.min.js"></script>
+  <script type="text/javascript" src="assets/d3.legend.js"></script>
+
+  <!-- TableSorter -->
+  <!-- <script src="../templates/_assets/js/tablesorter.min.js"></script> -->
+  <link rel="stylesheet" href="assets/jquery.dataTables.css">
+  <script type="text/javascript" src="assets/jquery.dataTables.min.js"></script>
+
+  <!-- Lodash-->
+  <script type="text/javascript" src="assets/lodash.min.js"></script>
+
+  <!-- Front End Mustache -->
+  <script type="text/javascript" src="assets/mustache.min.js"></script>
+
+
+  <!-- External Stylesheets-->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/github-markdown.css">
+
+  <!-- Leaflet -->
+  <!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+   -->
+  <link rel="stylesheet" href="assets/leaflet.css"/>
+  <script src="assets/leaflet.js"></script>
+
+  <!-- Custom Stylesheets (Always Last)-->
+  <link rel="stylesheet" href="assets/main.css">
+
+  <!-- Custom Functions-->
+  <script type="text/javascript" src="assets/osmdown-base.js"></script>
+  <script type="text/javascript" src="assets/scrolling-header.js"></script>
+
+  <title> Nepal Earthquake </title>
+  <!-- Load the Front End Templates here for Mustache -->
+  <script id="changesetViewTemplate" type="x-tmpl-mustache">
+  <h5>{{comment}}</h5>
+  <p>{{#formatDate}} {{created_at}} {{/formatDate}}</p>
+
+  {{#tags}}
+    {{#created_by}} source: {{created_by}}{{/created_by}}
+  {{/tags}}
+
+  {{^tags}}<b>No tags</b>{{/tags}}
+</script>
+
+  <!-- End of Front End Templates -->
+</head>
+
 </head>
 <body>
 <div class="main wrapper">
@@ -68,7 +132,7 @@ var options = {
 					}
 					HTML += '<hr />'
 				}
-				HTML += '<p><em>Link: </em> <a target="_blank" href="/web/20150919192050/http://openstreetmap.org/note/' + popupData.id + '">www.openstreetmap.org/note/' + popupData.id + '</a></p>';
+				HTML += '<p><em>Link: </em> <a target="_blank" href="http://openstreetmap.org/note/' + popupData.id + '">www.openstreetmap.org/note/' + popupData.id + '</a></p>';
 				return HTML;
 			default:
 				return
@@ -99,8 +163,8 @@ var options = {
 
 
 <div style="float:left; padding:0px 30px; width:50%;">
-  <p>On April 25th, a 7.8 magnitude earthquake stuck Nepal approximately 50 miles northwest of Kathmandu.  With the coordination of <a href='/web/20150919192050/http://kathmandulivinglabs.org/'>Kathmandu Living Labs</a> and the <a href='/web/20150919192050/http://hotosm.org/'>Humanitarian OpenStreetMap Team</a>, a global volunteer effort to map roads and buildings in the affected area is under way.  OpenStreetMap data is being used by the American Red Cross, the World Bank, and other organizations to support response and recovery activities in Nepal. </p>
-  <p>Read more: <a href='/web/20150919192050/http://wiki.openstreetmap.org/wiki/2015_Nepal_earthquake'>http://wiki.openstreetmap.org/wiki/2015_Nepal_earthquake</a></p>
+  <p>On April 25th, a 7.8 magnitude earthquake stuck Nepal approximately 50 miles northwest of Kathmandu.  With the coordination of <a href='http://kathmandulivinglabs.org/'>Kathmandu Living Labs</a> and the <a href='http://hotosm.org/'>Humanitarian OpenStreetMap Team</a>, a global volunteer effort to map roads and buildings in the affected area is under way.  OpenStreetMap data is being used by the American Red Cross, the World Bank, and other organizations to support response and recovery activities in Nepal. </p>
+  <p>Read more: <a href='http://wiki.openstreetmap.org/wiki/2015_Nepal_earthquake'>http://wiki.openstreetmap.org/wiki/2015_Nepal_earthquake</a></p>
   <p>This site provides basic statistics describing the work of OSM volunteers in the response to this disaster. The data is based on hashtags used in changset comments and therefore undercounts the total amount of contributions occurring at this time.</p>
 
   <p><strong>This site is no longer tracking live editing statistics.</strong> We thank you for all the hard work done in this unprecedented response effort.</p>
@@ -113,7 +177,7 @@ var options = {
 var baseurl = '/data/www/nepal-live/'
 var date = new Date()
 var current_hour = date.getFullYear()+"_"+(date.getMonth()+1)+"_"+date.getDate()+"_"+date.getHours()
-var baseurl_live = baseurl + '/' + current_hour 
+var baseurl_live = baseurl + '/' + current_hour
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 var prettyDate = months[date.getMonth()] + " " + date.getDate() + " " +date.getHours() + ":00"
 
@@ -138,7 +202,7 @@ for (var i=0; i < changesets.length; i ++) {
 		totalChangesets += changesets[i].objects.length
 
 		uniqueUsers = _.uniq(_.collect(changesets[i].objects, 'uid'))
-		
+
 		hourlyUsers[i] = {}
 		hourlyUsers[i].date = changesets[i].start_date
 		hourlyUsers[i].value = uniqueUsers.length
@@ -255,7 +319,7 @@ legend = PerHour_dateChart.append("g")
 
 </script>
 
-<p style="font-size:10px; margin:-10px 0px 0px 35px;">UTC/GMT Time</p> 
+<p style="font-size:10px; margin:-10px 0px 0px 35px;">UTC/GMT Time</p>
 
 <pre>
 var baseurl = '/data/www/nepal/'
@@ -404,17 +468,17 @@ ways_per_tag.forEach(function(d){
   <hr>
   <p>Tue Jun 02 2015 16:41:37 GMT+0000 (UTC) </p>
 
-  <a href="/web/20150919192050/http://mapgive.state.gov/" target="_blank">
-    <img src="/web/20150919192050im_/https://pbs.twimg.com/profile_images/441322778780659712/Rd07X3fe.png" height="75">
+  <a href="http://mapgive.state.gov/" target="_blank">
+    <img src="assets/mapgiv.png" height="75">
   </a>
-  <img src="/web/20150919192050im_/http://osm.townsendjennings.com/templates/_assets/images/cu.png" height="75">
-  <a href="/web/20150919192050/http://epic.cs.colorado.edu/" target="_blank">
-    <img src="/web/20150919192050im_/http://osm.townsendjennings.com/templates/_assets/images/epic.png" height="75">
+  <img src="assets/cu.png" height="75">
+  <a href="http://epic.cs.colorado.edu/" target="_blank">
+    <img src="assets/epic.png" height="75">
   </a>
   <h6 style="font-size:15px;">
-    Page built with <a href="/web/20150919192050/http://github.com/project-epic/osmdown">osmdown</a>
-    and <a href="/web/20150919192050/http://github.com/project-epic/epic-osm">epic-osm</a>.
-    Licensed under the terms of the <a href="/web/20150919192050/http://project-epic.github.io/epic-osm/about/#licensing">MIT License</a>
+    Page built with <a href="http://github.com/project-epic/osmdown">osmdown</a>
+    and <a href="http://github.com/project-epic/epic-osm">epic-osm</a>.
+    Licensed under the terms of the <a href="http://project-epic.github.io/epic-osm/about/#licensing">MIT License</a>
   </h6>
 
 </div>
