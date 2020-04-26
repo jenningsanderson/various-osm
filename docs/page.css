@@ -7,13 +7,20 @@ body{
 	padding: 10px;
 }
 
+ul{
+	margin: 0px;
+	padding: 0px;
+}
+
 li{
 	list-style-type:none;
 	background: #FFF;
+	margin: 0;
+	padding: 0;
 }
 
 li.analysis-item a{
-	margin-top: 10px;
+	margin: 10px 0px;
 	padding: 5px;
 	display: block;
 	border: 1px solid steelblue;
