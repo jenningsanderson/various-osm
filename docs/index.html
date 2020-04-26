@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Various OSM related data analyses</title>
+  <meta name="description" content="Various OSM">
+  <meta name="author" content="Jennings Anderson">
+
+  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+</head>
+
+<body>
+  <script type="module">
+    
+    import { Octokit } from "https://cdn.pika.dev/@octokit/rest";
+
+    const octokit = new Octokit();
+
+    octokit.repos.getContents({
+      owner: "jenningsanderson",
+      repo: "various-osm",
+      path: "docs"
+  })
+  .then(({ data }) => {
+
+  	data.filter(_=>{
+  		return !(_.name=='index.html')
+  	})
+
+  	data.forEach(function(file){
+
+  	})
+
+    console.log(data)
+  });
+
+
+  </script>
+
+</body>
+</html>
