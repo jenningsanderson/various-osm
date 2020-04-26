@@ -1,0 +1,35 @@
+body{
+	max-width:1000px;
+	margin: 0 auto;
+	background-color:#EEE;
+	font-family:sans-serif;
+	border: 1px solid blue;
+	padding: 10px;
+}
+
+li{
+	list-style-type:none;
+	background: #FFF;
+}
+
+li.analysis-item a{
+	margin-top: 10px;
+	padding: 5px;
+	display: block;
+	border: 1px solid steelblue;
+	background: orangered;
+	height:30px;
+	text-decoration:none;
+	color: white;
+}
+
+li.analysis-item a{
+	margin-top: 10px;
+	padding: 5px;
+	display: block;
+	border: 1px solid steelblue;
+	background: orangered;
+	height:30px;
+	text-decoration:none;
+	color: white;
+}

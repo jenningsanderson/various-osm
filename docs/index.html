@@ -4,15 +4,31 @@
 <head>
   <meta charset="utf-8">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Various OSM related data analyses</title>
   <meta name="description" content="Various OSM">
   <meta name="author" content="Jennings Anderson">
 
-  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+  <link rel="stylesheet" href="page.css">
 
 </head>
 
 <body>
+
+	<section id='header'>
+		<h1>Results of Various OpenStreetMap Analyses by Jennings Anderson</h1>
+	</section>
+
+	<section id='main'>
+		<p>Smaller projects / archived projects that aren't enough to be their own repositories with project pages, but are worth sharing nonetheless: </p>
+
+		<ul id='contentList'></ul>
+
+	</section>
+
+
+  <script src="page.js"></script>
   <script type="module">
     
     import { Octokit } from "https://cdn.pika.dev/@octokit/rest";
@@ -26,15 +42,18 @@
   })
   .then(({ data }) => {
 
-  	data.filter(_=>{
-  		return !(_.name=='index.html')
+  	var list = document.getElementById('contentList')
+
+  	data.filter( _ =>{
+  		
+  		return ['index.html','CNAME','page.js','page.css'].indexOf(_.name) < 0
+
+  	}).forEach(function(file){
+
+  		list.appendChild(
+  			buildBeautifulListItemLink(file))
+  		
   	})
-
-  	data.forEach(function(file){
-
-  	})
-
-    console.log(data)
   });
 
 
