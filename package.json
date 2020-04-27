@@ -1,0 +1,26 @@
+{
+  "name": "various-osm",
+  "version": "1.0.0",
+  "description": "Home of various OSM related anlayses that are more than a gist but less than a full repo.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenningsanderson/various-osm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenningsanderson/various-osm/issues"
+  },
+  "homepage": "https://github.com/jenningsanderson/various-osm#readme",
+  "dependencies": {
+    "@mapbox/tile-reduce": "^3.3.0",
+    "@turf/turf": "^5.1.6"
+  }
+}
