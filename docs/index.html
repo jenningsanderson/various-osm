@@ -23,7 +23,10 @@
 	<section id='main'>
 		<p>Smaller projects / archived projects that aren't enough to be their own repositories with project pages, but are worth sharing nonetheless: </p>
 
-		<ul id='contentList'></ul>
+		<ul id='contentList'>
+			
+
+		</ul>
 
 	</section>
 
@@ -31,18 +34,14 @@
   <script src="page.js"></script>
   <script type="module">
     
-    import { Octokit } from "https://cdn.pika.dev/@octokit/rest";
-
-    const octokit = new Octokit();
-
-    octokit.repos.getContents({
-      owner: "jenningsanderson",
-      repo: "various-osm",
-      path: "docs"
-  })
-  .then(({ data }) => {
-
   	var list = document.getElementById('contentList')
+
+  	var data = [
+  		{'name':'changesets-about-golf.html'},
+  		{'name':'potlatch.html'},
+  		{'name':'global-stats-april2020.json'},
+
+  	]
 
   	data.filter( _ =>{
   		
@@ -54,8 +53,6 @@
   			buildBeautifulListItemLink(file))
   		
   	})
-  });
-
 
   </script>
 
